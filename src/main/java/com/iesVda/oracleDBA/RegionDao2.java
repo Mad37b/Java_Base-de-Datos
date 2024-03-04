@@ -76,14 +76,190 @@ public class RegionDao implements DaoInterface<Region> {
 
 		return t;
 	}
-	
-	public Region get_name(Region t) {
 
+	@Override
+	public List<Region> getAll() {
 		// TODO Auto-generated method stub
 
-		// Devolver todo los nombres por getRegion_id( )
-		
-		
+		sql = "Select * From Region;";
+		try {
+			cursor = stmt.executeQuery(sql);
+
+			while (cursor.next()) {
+				System.out.println("Id = " + cursor.getString("region_id") + ", Name = "
+						+ cursor.getString("region_name") + "<BR>");
+			}
+			cursor.close();
+			stmt.close();
+			Conexion.close();
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		System.out.println("<P>");
+
+		System.out.println("<P>");
+
+		// commit only when updating the DB
+		// conn.commit();
+		// disconnect
+
+		return getAll();
+	}
+
+	@Override
+	public Region save(Region t) {
+		// TODO Auto-generated method stub
+
+		sql = "Insert into Region (Region_name) VALUES(Oceania)";
+		try {
+			cursor = stmt.executeQuery(sql);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			while (cursor.next()) {
+				System.out.println("Id = " + cursor.getString("region_id") + ", Name = "
+						+ cursor.getString("region_name") + "<BR>");
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		System.out.println("<P>");
+
+		System.out.println("<P>");
+		try {
+			cursor.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			stmt.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		// commit only when updating the DB
+		// conn.commit();
+		// disconnect
+		try {
+			Conexion.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return t;
+	}
+
+	@Override
+	public Region update(Region t, String[] params) {
+		// TODO Auto-generated method stub
+		sql = "UPDATE Regions SET Region_name =" + t.getClass();
+		try {
+			cursor = stmt.executeQuery(sql);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		// While
+
+		try {
+			while (cursor.next()) {
+				System.out.println("Id = " + cursor.getString("region_id") + ", Name = "
+						+ cursor.getString("region_name") + "<BR>");
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		System.out.println("<P>");
+
+		System.out.println("<P>");
+		try {
+			cursor.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			stmt.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		// commit only when updating the DB
+		// conn.commit();
+		// disconnect
+		try {
+			Conexion.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return t;
+	}
+
+	@Override
+	public void delete(Region t) {
+		// TODO Auto-generated method stub
+
+		sql = "Delecte FROM Regions WHERE region_name= America";
+		try {
+			this.cursor = stmt.executeQuery(sql);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			while (cursor.next()) {
+				System.out.println("Id = " + cursor.getString("Region_id") + ", Name = "
+						+ cursor.getString("Region_Name") + "<BR>");
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		System.out.println("<P>");
+
+		System.out.println("<P>");
+		try {
+			cursor.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			stmt.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		// commit only when updating the DB
+		// conn.commit();
+		// disconnect
+		try {
+			Conexion.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+	}
+
+	@Override
+	public Region get_name(Region t) {
+		// TODO Auto-generated method stub
+
+		// Devolver todo los nombres
 
 		sql = "select region_name From Regions";
 
@@ -162,183 +338,4 @@ public class RegionDao implements DaoInterface<Region> {
 		return t;
 	}
 
-
-	@Override
-	public List<Region> getAll() {
-		// TODO Auto-generated method stub
-
-		sql = "Select * From Region;";
-		try {
-			cursor = stmt.executeQuery(sql);
-
-			while (cursor.next()) {
-				System.out.println("Id = " + cursor.getString("region_id") + ", Name = "
-						+ cursor.getString("region_name") + "<BR>");
-			}
-			cursor.close();
-			stmt.close();
-			Conexion.close();
-
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-
-		System.out.println("<P>");
-
-		System.out.println("<P>");
-
-		// commit only when updating the DB
-		// conn.commit();
-		// disconnect
-
-		return getAll();
-	}
-
-
-
-
-
-public void delete(Region t) {
-
-	// TODO Auto-generated method stub
-
-	sql = "Delecte FROM Regions WHERE region_name= America";
-	try {
-		this.cursor = stmt.executeQuery(sql);
-	} catch (SQLException e) {
-		// TODO Auto-generated catch block
-		e.printStackTrace();
-	}
-	try {
-		while (cursor.next()) {
-			System.out.println("Id = " + cursor.getString("Region_id") + ", Name = "
-					+ cursor.getString("Region_Name") + "<BR>");
-		}
-	} catch (SQLException e) {
-		// TODO Auto-generated catch block
-		e.printStackTrace();
-	}
-	System.out.println("<P>");
-
-	System.out.println("<P>");
-	try {
-		cursor.close();
-	} catch (SQLException e) {
-		// TODO Auto-generated catch block
-		e.printStackTrace();
-	}
-	try {
-		stmt.close();
-	} catch (SQLException e) {
-		// TODO Auto-generated catch block
-		e.printStackTrace();
-	}
-
-	// commit only when updating the DB
-	// conn.commit();
-	// disconnect
-	try {
-		Conexion.close();
-	} catch (SQLException e) {
-		// TODO Auto-generated catch block
-		e.printStackTrace();
-	}
-
-	public Region update(Region t, String[] params) {
-		// TODO Auto-generated method stub
-		sql = "UPDATE Regions SET Region_name =" + t.getClass();
-		try {
-			cursor = stmt.executeQuery(sql);
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-
-		// While
-
-		try {
-			while (cursor.next()) {
-				System.out.println("Id = " + cursor.getString("region_id") + ", Name = "
-						+ cursor.getString("region_name") + "<BR>");
-			}
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		System.out.println("<P>");
-
-		System.out.println("<P>");
-		try {
-			cursor.close();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		try {
-			stmt.close();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-
-		// commit only when updating the DB
-		// conn.commit();
-		// disconnect
-		try {
-			Conexion.close();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return t;
-	}
-
-	@Override
-	public Region save(Region t) {
-		// TODO Auto-generated method stub
-
-		sql = "Insert into Region (Region_name) VALUES(Oceania)";
-		try {
-			cursor = stmt.executeQuery(sql);
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		try {
-			while (cursor.next()) {
-				System.out.println("Id = " + cursor.getString("region_id") + ", Name = "
-						+ cursor.getString("region_name") + "<BR>");
-			}
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		System.out.println("<P>");
-
-		System.out.println("<P>");
-		try {
-			cursor.close();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		try {
-			stmt.close();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-
-		// commit only when updating the DB
-		// conn.commit();
-		// disconnect
-		try {
-			Conexion.close();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return t;
-	}
 }

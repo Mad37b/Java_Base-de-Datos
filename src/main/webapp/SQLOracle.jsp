@@ -5,9 +5,9 @@
 <%@ page import="java.sql.*"%>
 
 
+<%@ page import="com.iesVda.oracleDBA.*"%>
 
-<%@ page import="com.iesVda.oracleDBA.RegionDao"%>
-<%@ page import="com.iesVda.oracleDBA.Region" %>
+
 
 
 <%
