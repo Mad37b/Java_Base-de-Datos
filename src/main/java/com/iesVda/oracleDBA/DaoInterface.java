@@ -13,4 +13,9 @@ public interface DaoInterface<T> {
 	void delete(T t);
 	T get(T t);
 
+	
+	// test
+	Countries update(Countries t);
+	
+
 }

@@ -5,8 +5,7 @@ import java.util.*;
 /**
  * 
  */
-public class Employees 
-{
+public class Employees {
 
 	/**
      * Default constructor
@@ -14,61 +13,42 @@ public class Employees
     public Employees() {
     }
 
-	/**
-	 * 
-	 */
-	public String employee_id;
+	
+	private int employee_id;
+
+
+	private String first_name;
+
+	
+	private String last_name;
+
+	
+	private String email;
+
+	
+	private String phone_number;
+
+	
+	private Date hire_date;
+
+
+	private int jobs_id;
+
+	
+	private double salary=0;
+
+	public double commision_pct;
 
 	/**
 	 * 
 	 */
-	public String first_name;
-
+	private boolean manager_id;
+	private boolean isManager;
+	private boolean isWorking;
 	/**
 	 * 
 	 */
-	public String last_name;
-
-	/**
-	 * 
-	 */
-	public String email;
-
-	/**
-	 * 
-	 */
-	public String phone_number;
-
-	/**
-	 * 
-	 */
-	public int hire_date;
-
-	/**
-	 * 
-	 */
-	public String jobs_id;
-
-	/**
-	 * 
-	 */
-	public float salary;
-
-	/**
-	 * 
-	 */
-	public int commision_pct;
-
-	/**
-	 * 
-	 */
-public boolean manager_id;
-public boolean isManager;
-public boolean isWorking;
-	/**
-	 * 
-	 */
-	public int deparment_id;
+	private int deparment_id;
 
 	// relaciones entre clases
 
@@ -83,11 +63,11 @@ public boolean isWorking;
 
 	// Setter y Getters
 
-	public String getEmployee_id() {
+	public int getEmployee_id() {
 		return employee_id;
 	}
 
-	public void setEmployee_id(String employee_id) {
+	public void setEmployee_id(int employee_id) {
 		this.employee_id = employee_id;
 	}
 
@@ -123,23 +103,23 @@ public boolean isWorking;
 		this.phone_number = phone_number;
 	}
 
-	public int getHire_date() {
+	public Date getHire_date() {
 		return hire_date;
 	}
 
-	public void setHire_date(int hire_date) {
+	public void setHire_date(Date hire_date) {
 		this.hire_date = hire_date;
 	}
 
-	public String getJob_id() {
+	public int getJob_id() {
 		return jobs_id;
 	}
 
-	public void setJob_id(String jobsEmployees_id) {
+	public void setJob_id(int jobsEmployees_id) {
 		this.jobs_id = jobsEmployees_id;
 	}
 
-	public float getSalary() {
+	public double getSalary() {
 		return salary;
 	}
 
@@ -147,7 +127,7 @@ public boolean isWorking;
 		this.salary = salary;
 	}
 
-	public int getCommision_pct() {
+	public double getCommision_pct() {
 		return commision_pct;
 	}
 

@@ -89,6 +89,8 @@ public class Locations extends Departments {
 	public void setCountry_id(String country_id) {
 		this.country_id = country_id;
 	}
+
+	
     
     
 

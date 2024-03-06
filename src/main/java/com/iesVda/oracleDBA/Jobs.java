@@ -12,10 +12,8 @@ public class Jobs extends Employees {
     public Jobs() {
     }
 
-    /**
-     * 
-     */
-    public String job_id;
+   
+    public int job_id;
 
     /**
      * 
@@ -25,18 +23,18 @@ public class Jobs extends Employees {
     /**
      * 
      */
-    public Float min_salary;
+    public double min_salary=0;
 
     /**
      * 
      */
-    public Float max_salary;
+    private double max_salary=0;
 
-	public String getJob_id() {
+	public int getJob_id() {
 		return job_id;
 	}
 
-	public void setJob_id(String job_id) {
+	public void setJob_id(int job_id) {
 		this.job_id = job_id;
 	}
 
@@ -48,7 +46,7 @@ public class Jobs extends Employees {
 		this.job_title = job_title;
 	}
 
-	public Float getMin_salary() {
+	public double getMin_salary() {
 		return min_salary;
 	}
 
@@ -56,7 +54,7 @@ public class Jobs extends Employees {
 		this.min_salary = min_salary;
 	}
 
-	public Float getMax_salary() {
+	public double getMax_salary() {
 		return max_salary;
 	}
 
