@@ -72,13 +72,13 @@ public LocationsDao() {
 
 		// insertar un nombre nuevo de un pais
 
-		query = "Insert into Countries (Country_name,Country_id) VALUES" + "(" + t.getLocation_name() + ")" + "("
+		query = "Insert into Locations (Street_address,Locations_id) VALUES" + "(" + t.getStreet_address() + ")" + "("
 				+ t.getCountry_id() + ")";
 		try {
 			cursor = stmt.executeQuery(query);
 			while (cursor.next()) {
 				System.out.println(
-						"id" + cursor.getInt(t.location_id) + "Name = " + cursor.getString(t.getstreets-address) + "<BR>");
+						"id" + cursor.getInt(t.location_id) + "Name = " + cursor.getString(t.getStreet_address()) + "<BR>");
 			}
 			cursor.close();
 			stmt.close();
@@ -92,15 +92,14 @@ public LocationsDao() {
 
 	}
 
-	@Override
-	public Countries update(Countries t) {
+	public Locations update(Locations t) {
 
-		query = "UPDATE Countries SET Region_Name = " + t.getCountry_name() + "Where" + t.getCountry_id();
+		query = "UPDATE Locations SET Street_address() = " + t.getStreet_address() + "Where" + t.getLocation_id();
 		try {
 			cursor = stmt.executeQuery(query);
 			while (cursor.next()) {
-				System.out.println("id = " + cursor.getInt(t.getCountry_id()) + " Name "
-						+ cursor.getString(t.getCountry_name() + " <BR>"));
+				System.out.println("id = " + cursor.getInt(t.getLocation_id()) + " Name "
+						+ cursor.getString(t.getStreet_address() + " <BR>"));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -114,13 +113,13 @@ public LocationsDao() {
 
 	@Override
 	public void delete(Locations t) {
-		query=" Delete FROM Countries Where region_name = "+ t.getCountry_name();
+		query=" Delete FROM Countries Where region_name = "+ t.getLocation_id();
 		
 		try {
 			cursor = stmt.executeQuery(query);
 			while (cursor.next()) {
-				System.out.println("id = " + cursor.getInt(t.getCountry_id()) + " Name "
-						+ cursor.getString(t.getCountry_name() + " <BR>"));
+				System.out.println("id = " + cursor.getInt(t.getLocation_id()) + " Name "
+						+ cursor.getString(t.getStreet_address() + " <BR>"));
 			}
 			
 		}catch (SQLException e) {
@@ -138,16 +137,29 @@ public LocationsDao() {
 	}
 
 	@Override
-	public Countries get_id(Countries t) {
+	public Locations get_id(Locations t) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public Countries update(Countries t, String[] params) {
+	public Locations update(Locations t, String[] params) {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	@Override
+	public Countries update(Countries t) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+
+
+
+	
+	
 
 
 }

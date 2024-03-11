@@ -115,7 +115,7 @@ public class CountriesDao implements DaoInterface<Countries> {
 	}
 
 	@Override
-	public Countries update(Countries t) {
+	public Countries update(Countries t , String[] params) {
 
 		query = "UPDATE Countries SET Region_Name = " + t.getCountry_name() + "Where" + t.getCountry_id();
 		try {
@@ -166,10 +166,12 @@ public class CountriesDao implements DaoInterface<Countries> {
 	}
 
 	@Override
-	public Countries update(Countries t, String[] params) {
+	public Countries update(Countries t) {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+
 
 
 }

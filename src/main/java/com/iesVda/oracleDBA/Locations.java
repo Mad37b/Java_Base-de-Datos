@@ -4,7 +4,7 @@ import java.util.*;
 /**
  * 
  */
-public class Locations extends Departments {
+public class Locations  {
 
     /**
      * Default constructor
@@ -88,6 +88,16 @@ public class Locations extends Departments {
 
 	public void setCountry_id(String country_id) {
 		this.country_id = country_id;
+	}
+
+	public String getLocation_name() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public Locations update(Locations t) {
+		// TODO Auto-generated method stub
+		return t;
 	}
 
 	

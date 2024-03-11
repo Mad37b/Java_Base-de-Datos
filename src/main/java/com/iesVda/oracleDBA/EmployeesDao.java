@@ -3,128 +3,143 @@ package com.iesVda.oracleDBA;
 import java.util.ArrayList;
 import java.util.List;
 import java.sql.*;
-public class EmployeesDao extends Employees implements DaoInterface<Employees> {
-	private List<Employees> Employees = new ArrayList<Employees>();
+public class EmployeesDao implements DaoInterface<Employees> {
+	
+	String query;
+	int numRowsAffected;
 
-	public EmployeesDao(){
-			
-			
-			
-			//initialize driver class
-			try { 
-			Class.forName("oracle.jdbc.driver.OracleDriver");
-			} catch (Exception e) {
-			System.out.println("Fail to initialize Oracle JDBC driver: " + e.toString() + "<P>");
-			}
-			String dbUser = "hr";
-			String dbPasswd = "oracle";
-			String dbURL = "jdbc:oracle:thin:@localhost:1521/freepdb1";
+	Connection Conexion = null;
+	ResultSet cursor;
+	// public interface
+	Statement stmt;
 
-
-
-			//connect
-			Connection conn = null;
-			try {
-			conn = DriverManager.getConnection(dbURL,dbUser,dbPasswd);
-			System.out.println(" Connection status: " + conn + "<P>");
-			} catch(Exception e) {
-				System.out.println("Connection failed: " + e.toString() + "<P>"); 
-			}
-
-
-
-			String sql;
-			int numRowsAffected;
-			Statement stmt = null;
-			try {
-				stmt = conn.createStatement();
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			ResultSet rs = null;
-			sql = "select employee_id, first_name from employees";
-			try {
-				rs = stmt.executeQuery(sql);
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			try {
-				while (rs.next()) {
-					System.out.println("Id = " + rs.getString("EMPLOYEE_ID") + ", Name = " + rs.getString("FIRST_NAME") + "<BR>"); 
-				}
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-
-
-
-			System.out.println("<P>");
-
-
-
-			System.out.println("<P>");
-			try {
-				rs.close();
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			try {
-				stmt.close();
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-
-
-
-			//commit only when updating the DB
-			//conn.commit();
-			//disconnect
-			try {
-				conn.close();
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			
-			System.out.println("Bye bye! The system time is now");
-			
-		}
+	public static final String dbUser = "hr";
+	String dbPasswd = "oracle";
+	String dbURL = "jdbc:oracle:thin:@localhost:1521/freepdb1";
+	
+	public EmployeesDao() {
+		
+	}
+	
+	
 
 	@Override
-	public Employees get(Employees table) {
+	public Employees get_name(Employees t) {
+		
+		query="select firts_name FROM Employees where firts_name = "+ getEmployee_id(t);
+		
+		try {
+			cursor = stmt.executeQuery(query);
+
+			while (cursor.next()) {
+				System.out.println("Employee id = " + cursor.getInt("Employee_id")+", First Name = "+cursor.getString("First_name"));
+
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		
+		
+		// TODO Auto-generated method stub
+		return t;
+	}
+
+	private Employees getEmployee_id(Employees t) {
+		// TODO Auto-generated method stub
+		
+		query="Select Employee_id FROM Employee_id Where "+getEmployee_id(t);
+		
+		try {
+			cursor = stmt.executeQuery(query);
+
+			while (cursor.next()) {
+				System.out.println("Employee id = " + cursor.getInt("Employee_id")+", First Name = "+cursor.getString("First_name"));
+
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		
+		return t;
+	}
+	
+	public Employees getEmployeebyID ( int id) {
+		
+		Employees employee = new Employees (); 
+		
+		query = " Select * From  Employees Where Emplooyee_id = " + id;
+		
+		try {
+			cursor = stmt.executeQuery(query);
+			while ( cursor.next()){
+				
+				System.out.println("Employee_id" +cursor.getInt("Employee_id")+" First_Name"+cursor.getString("First_Name")
+				+"Last_Name"+cursor.getString("Last_Name")+"Email"+cursor.getString("Email")+", Phone Number"+cursor.getString("Email")
+				+",Hire_Date" +cursor.getDate("Hire_Date")+",Job_id "+cursor.getInt("Job_id")+",Salary"+ cursor.getInt("Salary")
+				+",Commission_PCT "+cursor.getInt("Commission_PCT")+",Manager_id"+cursor.getInt("Manager_id")+",Department_id"+cursor.getInt("Department_id"));
+				
+				employee=query;
+				
+			}
+			
+			
+		}catch (Exception e) {
+			// TODO: handle exception
+		}
+		return employee ;
+		
+	}
+
+
+
+	
+
+	@Override
+	public List<Employees> getAll() {
+		// TODO Auto-generated method stub
+		return  getAll() ;
+	}
+
+	@Override
+	public Employees save(Employees t) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public List<Employees> getAll() {
+	public Employees update(Employees t, String[] params) {
 		// TODO Auto-generated method stub
-
-		return Employees;
+		return null;
 	}
 
 	@Override
-	public void save(Employees table) {
+	public void delete(Employees t) {
 		// TODO Auto-generated method stub
-
+		
 	}
 
 	@Override
-	public void update(Employees table, String[] params) {
+	public Employees get(Employees t) {
 		// TODO Auto-generated method stub
-
+		return null;
 	}
+
+	public Employees get_id(Employees t) {
+		// TODO Auto-generated method stub
+		return t;
+	}
+
+
 
 	@Override
-	public void delete(Employees table) {
-		// Employees.first_name.remove(Employees);
+	public Countries update(Countries t) {
 		// TODO Auto-generated method stub
-
+		return null;
 	}
+	
 
 }

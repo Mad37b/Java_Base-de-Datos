@@ -25,7 +25,7 @@ public class Departments extends Employees {
     /**
      * 
      */
-    public String manager_id;
+    public boolean manager_id;
 
     /**
      * 
@@ -48,11 +48,11 @@ public class Departments extends Employees {
 		this.department_name = department_name;
 	}
 
-	public String getManager_id() {
+	public boolean getManager_id() {
 		return manager_id;
 	}
 
-	public void setManager_id(String manager_id) {
+	public void setManager_id(boolean manager_id) {
 		this.manager_id = manager_id;
 	}
 

@@ -39,20 +39,20 @@ ResultSet cursor;
 
 // insert query regions
 out.println("<br>"+"///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// "+"<br>");
-out.println("<br>"+"Insercion de datos en la tabla Regiones "+"<br>");
+out.println("<br>"+"Consulta de la base de datos en JBDC "+"<br>");
 out.println("<br>"+"///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// "+"<br>");
  
 
 
 // select query regions
-query = "select region_name from Regions where region_name='Oceania'";
+query = "Select * From Employees where employee_id = '100' ";
 cursor = stmt.executeQuery(query);
 while (cursor.next()) {
 	
 	try{
-		out.println("Region_id"+cursor.getString("Region_id")+", Region_Name = "+"\n" +"\r"+ cursor.getString("REGION_NAME") + "<BR>"); 
+		out.println("Employee_id = "+cursor.getInt("Employee_id")+", First_name = "+"\n" +"\r"+ cursor.getString("First_name") + "<BR>"); 
 	}catch(SQLException e){
-		out.println("Region_id = "+("Null")+ "<BR>"+", Region_Name = "+"\n" +"\r"+ cursor.getString("REGION_NAME") + "<BR>"); 
+		out.println("Department_id = "+("Null")+ "<BR>"+", Depatment_name= "+"\n" +"\r"+ cursor.getString("Department_name") + "<BR>"); 
 	}
 	
 }
